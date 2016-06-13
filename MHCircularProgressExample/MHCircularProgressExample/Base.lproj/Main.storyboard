@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gn6-gu-TeL" userLabel="圆环无进度" customClass="MHCircularProgressView">
+                                <rect key="frame" x="250" y="40" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="CEs-9R-Khb"/>
+                                    <constraint firstAttribute="height" constant="100" id="Qky-C2-j6j"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCL-1j-rew" userLabel="圆型无进度" customClass="MHCircularProgressView">
+                                <rect key="frame" x="250" y="160" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cBW-O1-RTK"/>
+                                    <constraint firstAttribute="width" constant="100" id="lCl-bG-Kbn"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yY9-RY-wXR" userLabel="圆环有进度" customClass="MHLabeledCircularProgressView">
+                                <rect key="frame" x="250" y="280" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="JyK-Ma-qAd"/>
+                                    <constraint firstAttribute="width" constant="100" id="b4B-d8-kv0"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fs-8g-d6q" userLabel="圆型有进度" customClass="MHLabeledCircularProgressView">
+                                <rect key="frame" x="250" y="400" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="1JF-if-l35"/>
+                                    <constraint firstAttribute="height" constant="100" id="TSD-e8-Gau"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gn6-gu-TeL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7w2-ns-7Jf"/>
+                            <constraint firstItem="8fs-8g-d6q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Dp-1d-CDD"/>
+                            <constraint firstItem="Gn6-gu-TeL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="EiS-lf-pzP"/>
+                            <constraint firstItem="yY9-RY-wXR" firstAttribute="top" secondItem="UCL-1j-rew" secondAttribute="bottom" constant="20" id="TdR-qS-ov5"/>
+                            <constraint firstItem="UCL-1j-rew" firstAttribute="top" secondItem="Gn6-gu-TeL" secondAttribute="bottom" constant="20" id="U7y-eb-V8v"/>
+                            <constraint firstItem="8fs-8g-d6q" firstAttribute="top" secondItem="yY9-RY-wXR" secondAttribute="bottom" constant="20" id="qgE-e2-T9L"/>
+                            <constraint firstItem="UCL-1j-rew" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rt1-jn-rBa"/>
+                            <constraint firstItem="yY9-RY-wXR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zFt-QL-BaQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="annularNoProgress" destination="Gn6-gu-TeL" id="MAi-jL-0cr"/>
+                        <outlet property="annularProgress" destination="yY9-RY-wXR" id="Hf5-Qr-D1h"/>
+                        <outlet property="circleNoProgress" destination="UCL-1j-rew" id="9Z2-Mm-kbv"/>
+                        <outlet property="circleProgress" destination="8fs-8g-d6q" id="crh-up-fYf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="405"/>
+        </scene>
+    </scenes>
+</document>
