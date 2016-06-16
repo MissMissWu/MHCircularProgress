@@ -17,15 +17,6 @@
 #endif
 
 
-// 圆形进度 显示模式
-typedef enum : NSUInteger {
-    MHCircularProgressViewTypeAnnular = 10000,  //圆环状
-    MHCircularProgressViewTypeCircle,           //圆形填充状
-} MHCircularProgressViewType;
-
-
-
-
 @interface MHCircularProgressView : UIView
 
 /**

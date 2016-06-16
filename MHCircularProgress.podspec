@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MHCircularProgress"
-  s.version      = "1.0.1"
+  s.version      = "1.0.3"
   s.summary      = "A good circular progress indicator made by CoderMikeHe"
   s.homepage     = "https://github.com/CoderMikeHe/MHCircularProgress"
   s.license      = "MIT"
