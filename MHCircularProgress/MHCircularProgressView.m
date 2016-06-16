@@ -33,29 +33,26 @@ static const CGFloat kMHCicleLineWith = 4.f;
         //基础配置
         MHCircularProgressView *appearance = [MHCircularProgressView appearance];
         
-        //设置进度展示类型
-        [appearance setProgressType:MHCircularProgressViewTypeAnnular];
-        
+
         //设置背景色
         [appearance setBackgroundTintColor:[[UIColor alloc] initWithWhite:1.f alpha:.1f]];
         
         //设置进度条的指示颜色
         [appearance setProgressTintColor:[[UIColor alloc] initWithWhite:1.f alpha:1.f]];
         
-        //设置进度条的指示背景色 注意：必须showtype = MHCircularProgressViewTypeCircle 的情况下有效
+        //设置进度条的指示背景色 注意：必须annular = NO 的情况下有效
         [appearance setProgressBackgroundColor:[[UIColor alloc] initWithWhite:1.f alpha:.1f]];
-        
-        //设置圆弧的两段的线头类型 注意：必须showtype = MHCircularProgressViewTypeAnnular 的情况下有效
-        [appearance setAnnularLineCapStyle:kCGLineCapRound];
-        
-        //设置圆弧的线宽 注意：必须showtype = MHCircularProgressViewTypeCircle 的情况下有效
+        //设置圆弧的线宽 注意：必须annular = NO 的情况下有效
         [appearance setCircleLineWith:kMHCicleLineWith];
         
-        //设置圆型填充的边缘的线宽 注意：必须showtype = MHCircularProgressViewShowTypeAnnular 的情况下有效
+        
+        
+        //设置圆弧的两段的线头类型 注意：必须annular = YES 的情况下有效
+        [appearance setAnnularLineCapStyle:kCGLineCapRound];
+        //设置圆型填充的边缘的线宽 注意：必须annular = YES 的情况下有效
         [appearance setAnnularLineWith:kMHAnnularLineWith];
         
-        //默认是顺时针
-        [appearance setClockwiseProgress:YES];
+        
 
     }
 }
@@ -92,8 +89,10 @@ static const CGFloat kMHCicleLineWith = 4.f;
     self.backgroundColor = [UIColor clearColor];
     
     self.opaque = NO;
-    
+    _annular = YES;
+    _clockwise = YES;
     _progress = 0.f;
+    
     
     //添加KVO观察者
     [self registerForKVO];
@@ -107,7 +106,7 @@ static const CGFloat kMHCicleLineWith = 4.f;
 #pragma mark - Drawing
 - (void)drawRect:(CGRect)rect
 {
-    if (self.progressType == MHCircularProgressViewTypeAnnular)   //圆环模式
+    if (self.isAnnular)   //圆环模式
     {
         //1. Draw background path
         // 圆环的宽度
@@ -129,7 +128,7 @@ static const CGFloat kMHCicleLineWith = 4.f;
         // 结束角度
         CGFloat endAngle = (2 * (float)M_PI) + startAngle;
         // 绘制圆弧
-        [progressBackgroundPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:self.clockwiseProgress];
+        [progressBackgroundPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:self.isClockwise];
         // 设置圆弧背景的线条颜色
         [self.backgroundTintColor set];
         // 画线
@@ -150,7 +149,7 @@ static const CGFloat kMHCicleLineWith = 4.f;
         // 进度变化
         endAngle = (self.progress * 2 * (float)M_PI) + startAngle;
         // 画进度
-        [progressPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:self.clockwiseProgress];
+        [progressPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:self.isClockwise];
         // 设置进度圆弧的画笔颜色
         [self.progressTintColor set];
         // 画线
@@ -196,7 +195,7 @@ static const CGFloat kMHCicleLineWith = 4.f;
         //绘制起始点
         CGContextMoveToPoint(context, center.x, center.y);
         
-        int clockwise = self.clockwiseProgress!= 0?0:1;
+        int clockwise = self.isClockwise?0:1;
     
         //绘制圆弧
         CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, clockwise);
@@ -237,8 +236,8 @@ static const CGFloat kMHCicleLineWith = 4.f;
             @"annularLineCapStyle",
             @"annularLineWith",
             @"circleLineWith",
-            @"progressType",
-            @"clockwiseProgress",
+            @"annular",
+            @"clockwise",
             nil];
 }
 

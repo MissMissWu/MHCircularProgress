@@ -63,21 +63,23 @@
 #pragma mark - 初始化进度条
 - (void) setupCircularProgress
 {
+    // 设置圆环 线头的样式
     self.annularNoProgress.annularLineCapStyle = kCGLineCapRound;
+    // 设置圆环 线宽
     self.annularNoProgress.annularLineWith = 10.f;
     
     
-    self.circleNoProgress.progressType = MHCircularProgressViewTypeCircle;
+    self.circleNoProgress.annular = NO;
     self.circleNoProgress.progressTintColor = [UIColor purpleColor];
     self.circleNoProgress.progressBackgroundColor = [UIColor lightGrayColor];
     
     
     self.annularProgress.annularLineCapStyle = kCGLineCapRound;
     self.annularProgress.annularLineWith = 5.f;
-    self.annularProgress.clockwiseProgress = NO;
+    self.annularProgress.clockwise = NO;
     self.annularProgress.progressTintColor = [UIColor yellowColor];
     
-    self.circleProgress.progressType = MHCircularProgressViewTypeCircle;
+    self.circleProgress.annular = NO;
 }
 
 

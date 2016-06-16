@@ -44,52 +44,56 @@ typedef enum : NSUInteger {
 @property (nonatomic, MH_STRONG) UIColor *backgroundTintColor UI_APPEARANCE_SELECTOR;
 
 
-
-
 /*
  * 圆环的的连接方式
- * when showType = MHCircularProgressViewTypeAnnular. annularLineCapStyle is affect.
+ * when annular = YES. annularLineCapStyle is affect.
  * default is kCGLineCapRound
  */
 @property (nonatomic, assign) CGLineCap annularLineCapStyle UI_APPEARANCE_SELECTOR;
+
+
 /**
  * 圆环的线宽
- * when showType = MHCircularProgressViewTypeAnnular annularLineWith is affect
+ * when annular = YES annularLineWith is affect
  * default 4.0f
  */
 @property (nonatomic, assign) CGFloat annularLineWith  UI_APPEARANCE_SELECTOR;
 
+
 /**
  * 圆形填充进度条的 进度颜色
- * when showType = MHCircularProgressViewTypeCircle progressBackgroundColor is affect.
+ * when annular = NO progressBackgroundColor is affect.
  * Defaults as white [[UIColor alloc] initWithWhite:1.f alpha:1.f]
  */
 @property (nonatomic, MH_STRONG) UIColor *progressBackgroundColor UI_APPEARANCE_SELECTOR;
+
+
 /**
  * 圆形填充进度条的线宽
- * when showType = MHCircularProgressViewTypeCircle annularLineWith is affect
+ * when annular = NO annularLineWith is affect
  * default 4.0f
  */
 @property (nonatomic, assign) CGFloat circleLineWith  UI_APPEARANCE_SELECTOR;
 
 
-
 /** 
  *  显示进度的展示的模式
- *  default is MHCircularProgressViewTypeAnnular
+ *  default is YES
  *  Can not use BOOL with UI_APPEARANCE_SELECTOR
  */
-@property (nonatomic , assign) MHCircularProgressViewType progressType UI_APPEARANCE_SELECTOR;
+@property (nonatomic , assign , getter=isAnnular) BOOL annular ;
+
+
 /**
  * 进度显示方向 顺时针还是逆时针
  * default is YES
  */
-@property (nonatomic , assign) NSInteger clockwiseProgress UI_APPEARANCE_SELECTOR;
+@property (nonatomic , assign , getter=isClockwise) BOOL clockwise;
 
 
 
 /**
- * Progress (0.0 to 1.0)  进度
+ * 设置进度 Progress (0.0 to 1.0)  进度
  */
 @property (nonatomic, assign) CGFloat progress;
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
